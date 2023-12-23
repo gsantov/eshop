@@ -22,17 +22,17 @@ public class EshopApplication {
 
     @PostConstruct
     private void createClients() {
-        clientService.createClient(ClientEntity.builder()
-                .documentNumber("1720997905")
-                .name("Genaro Sulca")
-                .email("genarosulca@hotmail.com")
-                .build());
-
-        clientService.createClient(ClientEntity.builder()
-                .documentNumber("1720997906")
-                .name("Sebastian Sulca")
-                .email("genaro@yopmail.com")
-                .build());
+//        clientService.createClient(ClientEntity.builder()
+//                .documentNumber("1720997905")
+//                .name("Genaro Sulca")
+//                .email("genarosulca@hotmail.com")
+//                .build());
+//
+//        clientService.createClient(ClientEntity.builder()
+//                .documentNumber("1720997906")
+//                .name("Sebastian Sulca")
+//                .email("genaro@yopmail.com")
+//                .build());
     }
 
 }

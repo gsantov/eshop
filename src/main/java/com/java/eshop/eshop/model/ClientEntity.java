@@ -21,7 +21,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "client")
+@Table(name = "client", schema = "eshop")
 public class ClientEntity {
 
     @Id

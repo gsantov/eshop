@@ -24,7 +24,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "orders")
+@Table(name = "orders", schema = "eshop")
 public class OrderEntity {
 
     @Id

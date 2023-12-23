@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "shop_product")
+@Table(name = "shop_product", schema = "eshop")
 public class ShopProductEntity {
 
     @Id
