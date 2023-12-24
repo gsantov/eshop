@@ -37,6 +37,10 @@ dependencies {
 //	implementation 'com.querydsl:querydsl-jpa'
 //	annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
 
+	implementation 'net.sf.jasperreports:jasperreports:6.20.0'
+//	implementation 'com.lowagie:itext:2.1.7.js2'
+// https://mvnrepository.com/artifact/com.lowagie/itext
+	implementation 'com.lowagie:itext:2.1.7'
 
 
 
