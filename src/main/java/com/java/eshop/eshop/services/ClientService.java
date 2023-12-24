@@ -2,11 +2,11 @@ package com.java.eshop.eshop.services;
 
 import com.java.eshop.eshop.dto.ClientDTO;
 import com.java.eshop.eshop.mapper.ClientMapper;
-import com.java.eshop.eshop.model.ClientEntity;
 import com.java.eshop.eshop.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -30,7 +30,9 @@ public class ClientService {
      * @param data
      * @return
      */
-    public ClientDTO createClient(ClientEntity data){
-        return ClientMapper.INSTANCE.clientEntToClientDto(clientRepository.save(data));
+    @Transactional
+    public ClientDTO createPerson(ClientDTO data){
+        return ClientMapper.INSTANCE.clientEntToClientDto(clientRepository
+                .save(ClientMapper.INSTANCE.personDtoToPersonEnt(data)));
     }
 }

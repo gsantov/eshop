@@ -7,6 +7,7 @@ import com.java.eshop.eshop.dto.OrderDTO;
 import com.java.eshop.eshop.model.ClientEntity;
 import com.java.eshop.eshop.model.OrderEntity;
 import com.java.eshop.eshop.model.OrderProductEntity;
+import com.java.eshop.eshop.model.ProviderEntity;
 import com.java.eshop.eshop.model.ShopEntity;
 import com.java.eshop.eshop.model.ShopProductEntity;
 import com.java.eshop.eshop.repositories.OrderProductRepository;
@@ -16,6 +17,7 @@ import com.java.eshop.eshop.repositories.ShopProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +45,7 @@ public class OrderService {
      * @param orderDTO
      * @return
      */
+    @Transactional
     public OrderDTO createOrder(OrderDTO orderDTO) {
         // Valido que exista el producto en la tienda
         verifyShopAndProductExistance(orderDTO);
@@ -51,6 +54,7 @@ public class OrderService {
                 .totalCost(orderDTO.getTotalCost())
                 .status(Status.ACTIVE.value)
                 .orderCreationDate(new Date())
+                .provider(ProviderEntity.builder().id(orderDTO.getProviderId()).build())
                 .client(ClientEntity.builder().id(orderDTO.getClientId()).build())
                 .build());
         // 3. Creo order product

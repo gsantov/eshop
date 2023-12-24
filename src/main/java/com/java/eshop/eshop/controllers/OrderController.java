@@ -37,12 +37,12 @@ public class OrderController {
     /**
      * Servicio para obtener los pedidos de un cliente en un rango de fechas
      */
-    @GetMapping("/client/{clientId}")
-    public ResponseEntity<ResponseDTO<List<OrderDTO>>> findOrdersByClientAndDateRanges(@PathVariable Long clientId,
+    @GetMapping("/client/{personId}")
+    public ResponseEntity<ResponseDTO<List<OrderDTO>>> findOrdersByClientAndDateRanges(@PathVariable Long personId,
                                                                                        @RequestParam Long initialDate,
                                                                                        @RequestParam Long finishDate) {
         return new ResponseEntity<>(ResponseDTO.<List<OrderDTO>>builder()
-                .data(orderService.findOrdersByClientAndDateRanges(clientId, initialDate, finishDate))
+                .data(orderService.findOrdersByClientAndDateRanges(personId, initialDate, finishDate))
                 .build(), HttpStatus.OK);
     }
 

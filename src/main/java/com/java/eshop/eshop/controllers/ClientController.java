@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +28,13 @@ public class ClientController {
     public ResponseEntity<ResponseDTO<List<ClientDTO>>> findAll() {
         return new ResponseEntity<>(ResponseDTO.<List<ClientDTO>>builder()
                 .data(clientService.findAll())
+                .build(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<ResponseDTO<ClientDTO>> create(@RequestBody ClientDTO data) {
+        return new ResponseEntity<>(ResponseDTO.<ClientDTO>builder()
+                .data(clientService.createPerson(data))
                 .build(), HttpStatus.OK);
     }
 

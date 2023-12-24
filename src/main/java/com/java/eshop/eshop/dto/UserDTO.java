@@ -5,18 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDTO {
+public class UserDTO {
 
     private Long id;
-    private Long clientId;
-    private Long providerId;
-    private Double totalCost;
-    private List<OrderShopDTO> shopList;
+    private String userName;
+    private String password;
 
 }

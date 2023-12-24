@@ -38,6 +38,10 @@ public class OrderEntity {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private ClientEntity client;
 
+    @ManyToOne
+    @JoinColumn(name = "provider_id", referencedColumnName = "id")
+    private ProviderEntity provider;
+
     @OneToMany(mappedBy = "order")
     private Collection<OrderProductEntity> productsList;
 
