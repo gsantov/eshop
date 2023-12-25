@@ -11,6 +11,7 @@ import com.java.eshop.eshop.services.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,10 @@ public class ShopController {
 
     @Autowired
     private ShopProductService shopProductService;
+
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     /**
@@ -59,6 +64,7 @@ public class ShopController {
      */
     @GetMapping
     public ResponseEntity<ResponseDTO<List<ShopDTO>>> findAll() {
+        passwordEncoder.encode("Password01");
         return new ResponseEntity<>(ResponseDTO.<List<ShopDTO>>builder()
                 .data(shopService.findAll())
                 .build(), HttpStatus.OK);
