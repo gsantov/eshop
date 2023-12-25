@@ -12,4 +12,6 @@ La aplicación debe exponer endPoints para:
 - Recuperar por tienda el stock de los productos que posee
 - Realizar pedido de un cliente a uno o varias tiendas
 - Recuperar las pedidos por clientes en un rango de fechas
-- Eliminar un pedido 
+- Eliminar un pedido
+
+Se agrega un sql inicial que es un dump de la base de datos con data que se utilizó para las pruebas
