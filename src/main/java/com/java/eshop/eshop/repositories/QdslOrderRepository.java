@@ -3,11 +3,14 @@ package com.java.eshop.eshop.repositories;
 import com.java.eshop.eshop.common.Status;
 import com.java.eshop.eshop.dto.OrderDTO;
 import com.java.eshop.eshop.dto.OrderProductDTO;
+import com.java.eshop.eshop.dto.OrderReportDTO;
 import com.java.eshop.eshop.dto.OrderShopDTO;
 import com.java.eshop.eshop.model.OrderEntity;
 
+import com.java.eshop.eshop.model.QClientEntity;
 import com.java.eshop.eshop.model.QOrderEntity;
 import com.java.eshop.eshop.model.QOrderProductEntity;
+import com.java.eshop.eshop.model.QProviderEntity;
 import com.java.eshop.eshop.model.QShopEntity;
 import com.java.eshop.eshop.model.QShopProductEntity;
 import com.querydsl.core.group.Group;
@@ -64,6 +67,20 @@ public class QdslOrderRepository extends QuerydslRepositorySupport {
                                 orderEntity.totalCost
                         ))
                 )
+                .stream().toList();
+    }
+
+    public List<OrderReportDTO> findOrdersReportData() {
+        QClientEntity clientEntity = QClientEntity.clientEntity;
+        QProviderEntity providerEntity = QProviderEntity.providerEntity;
+        return from(orderEntity)
+                .leftJoin(orderEntity.client, clientEntity)
+                .leftJoin(orderEntity.provider, providerEntity)
+                .select(Projections.bean(OrderReportDTO.class,
+                        clientEntity.name.as("clientName"),
+                        providerEntity.name.as("providerName"),
+                        orderEntity.totalCost.as("cost")
+                ))
                 .stream().toList();
     }
 

@@ -4,6 +4,7 @@ import com.java.eshop.eshop.common.DateUtil;
 import com.java.eshop.eshop.common.ShopException;
 import com.java.eshop.eshop.common.Status;
 import com.java.eshop.eshop.dto.OrderDTO;
+import com.java.eshop.eshop.dto.OrderReportDTO;
 import com.java.eshop.eshop.model.ClientEntity;
 import com.java.eshop.eshop.model.OrderEntity;
 import com.java.eshop.eshop.model.OrderProductEntity;
@@ -137,6 +138,10 @@ public class OrderService {
                     throw new ShopException("Product with id " + orderId + " does not exist");
                 });
         return true;
+    }
+
+    public List<OrderReportDTO> gerOrdersReport(){
+        return qdslOrderRepository.findOrdersReportData();
     }
 
 }
